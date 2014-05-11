@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category   Cybersource
+ * @package    Cybersource_Secureacceptance
+ * @author     ali@shopgo.me
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ -->
+<config>
+    <modules>
+        <Cybersource_Secureacceptance>
+            <version>0.0.1</version>
+        </Cybersource_Secureacceptance>
+    </modules>
+    <global>
+        <models>
+            <secureacceptance>
+                <class>Cybersource_Secureacceptance_Model</class>
+            </secureacceptance>
+        </models>
+        <resources>
+			<secureacceptance_setup>
+				<setup>
+					<module>Cybersource_Secureacceptance</module>
+				</setup>
+				<connection>
+					<use>core_setup</use>
+				</connection>
+			</secureacceptance_setup>
+			<secureacceptance_write>
+				<connection>
+					<use>core_write</use>
+				</connection>
+			</secureacceptance_write>
+			<secureacceptance_read>
+				<connection>
+					<use>core_read</use>
+				</connection>
+			</secureacceptance_read>
+        </resources>
+        <blocks>
+            <secureacceptance>
+                <class>Cybersource_Secureacceptance_Block</class>
+            </secureacceptance>
+        </blocks>
+        <helpers>
+            <secureacceptance>
+                <class>Cybersource_Secureacceptance_Helper</class>
+            </secureacceptance>
+        </helpers>
+    </global>
+    <frontend>
+        <routers>
+            <secureacceptance>
+                <use>standard</use>
+                <args>
+                    <module>Cybersource_Secureacceptance</module>
+                    <frontName>secureacceptance</frontName>
+                </args>
+            </secureacceptance>
+        </routers>
+        <layout>
+            <updates>
+                <secureacceptance>
+                    <file>secureacceptance.xml</file>
+                </secureacceptance>
+            </updates>
+        </layout>
+    </frontend>
+    <adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <cactimediainfo>
+											<title>Cybersource - All</title>
+										</cactimediainfo>
+										<paymentinfo>
+											<title>CyberSource Secure Acceptance WM Info</title>
+										</paymentinfo>
+										<secureacceptance>
+											<title>CyberSource Secure Acceptance WM Area</title>
+										</secureacceptance>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+    <default>
+        <payment>
+            <secureacceptance>
+                <active>0</active>
+				<enable_log>1</enable_log>
+               	<model>secureacceptance/secureacceptance</model>
+               	<title>CyberSource Secure Acceptance WM</title>
+                <mode>0</mode>
+				<order_status>pending</order_status>
+                <debug_flag>1</debug_flag>
+				<allowspecific>0</allowspecific>
+				<sort_order>1</sort_order>
+            </secureacceptance>
+        </payment>
+    </default>
+</config>
